@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const {Client, IntentsBitField} = require('discord.js');
 
 const client = new Client({
@@ -9,4 +11,17 @@ const client = new Client({
     ]
 })
 
-client.login('MTIwMjI5MzU3MTk5OTQ5ODMzMQ.GkXiDG.A8PZSOWNAz6ifEvqVdfFcVTy2cNcyU26h2WM9A')
+client.on('ready', (c) => {
+    console.log(`${c.user.username} is online!`)
+})
+
+client.on('messageCreate', (msg) => {
+    if (msg.author.bot) {
+        return
+    }
+    if (msg.content === 'hello' || msg.content === 'hi' || msg.content === 'hey') {
+        msg.reply(`hey ${msg.author.username}!`)
+    }
+})
+
+client.login(process.env.TOKEN)
