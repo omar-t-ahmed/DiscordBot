@@ -22,6 +22,10 @@ client.on('messageCreate', (msg) => {
     if (msg.content === 'hello' || msg.content === 'hi' || msg.content === 'hey') {
         msg.reply(`hey ${msg.author.username}!`)
     }
+
+    if (msg.content === 'whats your name?') {
+        msg.reply(`I'm ${c.user.username}!`)
+    }
 })
 
 client.login(process.env.TOKEN)
