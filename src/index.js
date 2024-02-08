@@ -29,9 +29,11 @@ client.on('messageCreate', (msg) => {
 })
 
 client.on('interactionCreate', (interaction) => {
-    if (!InteractionCollector.isChatInputCommand()) return;
+    if (!interaction.isChatInputCommand()) return;
 
-    console.log(interaction)
+    if (interaction.commandName === 'hey') {
+        interaction.reply('hey!')
+    }
 })
 
 client.login(process.env.TOKEN)
