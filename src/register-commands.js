@@ -6,6 +6,10 @@ const commands = [
     {
         name: 'hey',
         description: 'Replies with hey!'
+    },
+    {
+        name: 'ping',
+        description: 'Replies with pong!'
     }
 ]
 
