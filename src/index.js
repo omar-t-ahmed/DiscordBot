@@ -28,4 +28,10 @@ client.on('messageCreate', (msg) => {
     }
 })
 
+client.on('interactionCreate', (interaction) => {
+    if (!InteractionCollector.isChatInputCommand()) return;
+
+    console.log(interaction)
+})
+
 client.login(process.env.TOKEN)
