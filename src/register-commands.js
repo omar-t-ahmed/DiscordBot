@@ -10,13 +10,15 @@ const commands = [
             {
                 name: 'first-number',
                 description: 'first num',
-                type: ApplicationCommandOptionType.Number
+                type: ApplicationCommandOptionType.Number,
+                required: true
             },
             {
                 name: 'second-number',
                 description: 'second num',
-                type: ApplicationCommandOptionType.Number
-            },
+                type: ApplicationCommandOptionType.Number,
+                required: true
+            }
         ]
     }
 ]
