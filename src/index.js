@@ -42,7 +42,15 @@ client.on('interactionCreate', (interaction) => {
         const embed = new EmbedBuilder()
             .setTitle('embed title')
             .setDescription('embed description')
-
+            .setColor('Random')
+            .addFields({name: 'title', 
+            value: 'value',
+            inline: true
+            },
+            {name: 'title2', 
+            value: 'value2',
+            inline: true
+            })
         interaction.reply({embeds: [embed]})
     }
 })
