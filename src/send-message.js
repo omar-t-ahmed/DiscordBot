@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const {Client, IntentsBitField, EmbedBuilder} = require('discord.js');
+const {Client, IntentsBitField, EmbedBuilder, ActionRowBuilder, ButtonBuilder} = require('discord.js');
 
 const client = new Client({
     intents: [
@@ -26,8 +26,25 @@ const roles = [
     }
 ]
 
-client.on('ready', (c) => {
+client.on('ready', async (c) => {
     console.log(`${c.user.username} is online!`)
+
+    try {
+        const channel = await client.channels.cache.get('1028487498474737686')
+        if (!channel) return
+
+        const row = new ActionRowBuilder()
+
+        roles.forEach((role) => {
+            row.components.push(
+                new ButtonBuilder().setCustomId
+            )
+        })
+    } catch (error) {
+        console.log(error)
+    }
 })
+
+
 
 client.login(process.env.TOKEN)
