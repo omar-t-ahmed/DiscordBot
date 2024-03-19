@@ -74,4 +74,17 @@ client.on('messageCreate', ((message) => {
     }
 }))
 
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isButton()) return;
+    await interaction.deferReply({ ephemeral: true })
+
+    const role = interaction.guild.roles.cache.get(interaction.customId)
+    if (!role) {
+        interaction.editReply({
+            content: 'I couldnt find that role'
+        })
+        return
+    }
+})
+
 client.login(process.env.TOKEN)
