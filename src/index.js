@@ -85,6 +85,16 @@ client.on('interactionCreate', async (interaction) => {
         })
         return
     }
+
+    const hasRole = interaction.member.roles.cache.has(role.id)
+
+    if (hasRole) {
+        await interaction.member.roles.remove(role)
+        await interaction.editReply(`${role} role has been removed!`)
+        return
+    }
+
+    await interaction.member.roles.add(role)
 })
 
 client.login(process.env.TOKEN)
