@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const {Client, IntentsBitField, EmbedBuilder} = require('discord.js');
+const {Client, IntentsBitField, EmbedBuilder, ActivityType} = require('discord.js');
 
 const client = new Client({
     intents: [
@@ -13,6 +13,12 @@ const client = new Client({
 
 client.on('ready', (c) => {
     console.log(`${c.user.username} is online!`)
+
+    client.user.setActivity({
+        name: 'on twitch',
+        type: ActivityType.Streaming,
+        url: 'https://www.twitch.tv/valorant'
+    })
 })
 
 client.on('messageCreate', (msg) => {
