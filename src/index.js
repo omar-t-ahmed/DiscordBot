@@ -75,26 +75,30 @@ client.on('messageCreate', ((message) => {
 }))
 
 client.on('interactionCreate', async (interaction) => {
-    if (!interaction.isButton()) return;
-    await interaction.deferReply({ ephemeral: true })
-
-    const role = interaction.guild.roles.cache.get(interaction.customId)
-    if (!role) {
-        interaction.editReply({
-            content: 'I couldnt find that role'
-        })
-        return
+    try {
+        if (!interaction.isButton()) return;
+        await interaction.deferReply({ ephemeral: true })
+    
+        const role = interaction.guild.roles.cache.get(interaction.customId)
+        if (!role) {
+            interaction.editReply({
+                content: 'I couldnt find that role'
+            })
+            return
+        }
+    
+        const hasRole = interaction.member.roles.cache.has(role.id)
+    
+        if (hasRole) {
+            await interaction.member.roles.remove(role)
+            await interaction.editReply(`${role} role has been removed!`)
+            return
+        }
+    
+        await interaction.member.roles.add(role)
+    } catch (error) {
+        console.log(error)
     }
-
-    const hasRole = interaction.member.roles.cache.has(role.id)
-
-    if (hasRole) {
-        await interaction.member.roles.remove(role)
-        await interaction.editReply(`${role} role has been removed!`)
-        return
-    }
-
-    await interaction.member.roles.add(role)
 })
 
 client.login(process.env.TOKEN)
