@@ -40,6 +40,24 @@ const commands = [
         ]
     },
     {
+        name: 'divide',
+        description: 'Divides two numbers.',
+        options: [
+            {
+                name: 'first-number',
+                description: 'The first number',
+                type: ApplicationCommandOptionType.Number,
+                required: true
+            },
+            {
+                name: 'second-number',
+                description: 'The second number',
+                type: ApplicationCommandOptionType.Number,
+                required: true
+            }
+        ]
+    },
+    {
         name: 'embed',
         description: 'Sends an embed'
     }
